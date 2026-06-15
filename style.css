@@ -247,7 +247,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.0
 .bg-photo { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .bg-photo img { width: 100%; height: 100%; object-fit: cover; filter: blur(7px) brightness(.5) saturate(1.08); transform: scale(1.18); will-change: transform; animation: kenburns 26s ease-in-out infinite alternate; }
 .bg-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,13,16,.94) 0%, rgba(12,13,16,.82) 40%, rgba(12,13,16,.5) 74%, rgba(12,13,16,.58) 100%); }
-@keyframes kenburns { from { transform: scale(1.18) translate3d(0, 0, 0); } to { transform: scale(1.32) translate3d(-2.5%, -2%, 0); } }
+@keyframes kenburns { from { transform: scale(1.08); } to { transform: scale(1.26); } }
 @media (prefers-reduced-motion: reduce) { .bg-photo img { animation: none; transform: scale(1.06); } }
 
 /* Hero variant — keeps the brand red glow over the photo */
