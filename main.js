@@ -195,6 +195,30 @@
     setInterval(next, 6500);
   })();
 
+  /* ---- Signature beside the footer social icons (shows only if the image exists) ---- */
+  (function () {
+    var SRC = 'assets/signature.png';
+    var fb = document.querySelector('.foot-bottom');
+    if (!fb) return;
+    var socials = fb.querySelector('.socials');
+    if (!socials) return;
+    var probe = new Image();
+    probe.onload = function () {
+      var end = document.createElement('div');
+      end.className = 'foot-end';
+      var sig = document.createElement('span');
+      sig.className = 'foot-sig';
+      var logo = document.createElement('img');
+      logo.src = SRC;
+      logo.alt = 'Ninja';
+      sig.appendChild(logo);
+      fb.insertBefore(end, socials);   // group signature + socials together on the right
+      end.appendChild(sig);
+      end.appendChild(socials);
+    };
+    probe.src = SRC;
+  })();
+
   /* ---- Footer year ---- */
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

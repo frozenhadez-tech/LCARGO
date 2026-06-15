@@ -419,6 +419,19 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.0
 .socials a:hover { background: var(--amber); color: var(--ink); border-color: var(--amber); transform: translateY(-3px); }
 
 /* =========================================================
+   Footer signature (beside the social icons)
+   ========================================================= */
+.foot-end { display: flex; align-items: center; gap: 14px; }
+.foot-sig {
+  display: inline-flex; align-items: center;
+  background: #fff; border-radius: 9px; padding: 4px 9px;
+  box-shadow: 0 6px 18px -8px rgba(0,0,0,.55);
+  transition: transform .25s var(--ease);
+}
+.foot-sig:hover { transform: translateY(-2px); }
+.foot-sig img { height: 24px; width: auto; display: block; }
+
+/* =========================================================
    Reveal on scroll
    ========================================================= */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
