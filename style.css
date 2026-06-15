@@ -261,7 +261,13 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.0
 /* CTA band variant — stays boldly red, photo as animated texture */
 .cta-inner .bg-photo { border-radius: inherit; }
 .cta-inner .bg-photo img { filter: blur(4px) brightness(1.02) saturate(1.18); animation-duration: 26s; }
-.cta-inner .bg-photo::after { background: linear-gradient(120deg, rgba(225,37,27,.84), rgba(179,22,13,.88)); }
+.cta-inner .bg-photo::after {
+  background: linear-gradient(120deg, rgba(225,37,27,.86) 0%, rgba(179,22,13,.90) 35%, rgba(244,68,56,.82) 60%, rgba(179,22,13,.90) 100%);
+  background-size: 220% 220%;
+  animation: ctaSheen 16s ease-in-out infinite alternate;
+}
+@keyframes ctaSheen { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@media (prefers-reduced-motion: reduce) { .cta-inner .bg-photo::after { animation: none; } }
 
 /* Full-bleed CTA — the red/photo band fills the section edge to edge (no black around it) */
 .cta-band { padding: 0; }
