@@ -1,0 +1,8 @@
+<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LCARGO">
+  <rect x="1" y="1" width="36" height="36" rx="9" fill="#0a0f1c" stroke="#28324d"/>
+  <path d="M9 26V12" stroke="#ffae00" stroke-width="3" stroke-linecap="round"/>
+  <path d="M9 26h7" stroke="#ffae00" stroke-width="3" stroke-linecap="round"/>
+  <path d="M19 27l5-16 5 16" stroke="#f4f4ef" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M21.4 21h5.2" stroke="#f4f4ef" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="24" cy="8.5" r="1.6" fill="#ff7a00"/>
+</svg>
