@@ -152,6 +152,49 @@
     });
   });
 
+  /* ---- Random rotating hero background (cross-fade slideshow) ---- */
+  (function () {
+    var box = document.querySelector('.bg-photo[data-rotate]');
+    if (!box) return;
+    var pool = (box.getAttribute('data-images') || '')
+      .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+    if (pool.length < 2) return;
+
+    // Fisher–Yates shuffle for a random order each load
+    for (var i = pool.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+    }
+
+    // Two stacked layers to cross-fade between
+    var a = box.querySelector('img') || document.createElement('img');
+    a.setAttribute('aria-hidden', 'true');
+    if (!a.parentNode) box.appendChild(a);
+    var b = a.cloneNode(false);
+    box.appendChild(b);
+    box.classList.add('rotating');
+
+    var layers = [a, b], top = 0, idx = 0;
+    a.src = pool[0]; a.style.opacity = '1';
+    b.style.opacity = '0';
+
+    // Respect reduced-motion: show one random image, don't auto-cycle
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    // Preload the rest for smooth fades
+    pool.slice(1).forEach(function (src) { var p = new Image(); p.src = src; });
+
+    function next() {
+      idx = (idx + 1) % pool.length;
+      var cur = layers[top], nxt = layers[1 - top];
+      var swap = function () { nxt.style.opacity = '1'; cur.style.opacity = '0'; top = 1 - top; };
+      nxt.src = pool[idx];
+      if (nxt.complete) swap(); else nxt.onload = swap;
+    }
+    setInterval(next, 6500);
+  })();
+
   /* ---- Footer year ---- */
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

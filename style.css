@@ -246,6 +246,8 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.0
 .has-bgphoto > .wrap { position: relative; z-index: 2; }
 .bg-photo { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .bg-photo img { width: 100%; height: 100%; object-fit: cover; filter: blur(7px) brightness(.5) saturate(1.08); transform: scale(1.18); will-change: transform; animation: kenburns 26s ease-in-out infinite alternate; }
+/* Cross-fading slideshow layers (random rotating background) */
+.bg-photo.rotating img { position: absolute; inset: 0; transition: opacity 1.6s ease; }
 .bg-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,13,16,.94) 0%, rgba(12,13,16,.82) 40%, rgba(12,13,16,.5) 74%, rgba(12,13,16,.58) 100%); }
 @keyframes kenburns { from { transform: scale(1.08); } to { transform: scale(1.26); } }
 @media (prefers-reduced-motion: reduce) { .bg-photo img { animation: none; transform: scale(1.06); } }
